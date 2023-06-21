@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ToDo.Application.DTOs.Common;
 
 namespace ToDo.Application.DTOs.ToDo
 {
-	public class PlanDto : BaseDto, IPlanDto
+	public interface IPlanDto
 	{
-		public string Title { get; set; }
-	}
+        public string Title { get; set; }
+    }
 }

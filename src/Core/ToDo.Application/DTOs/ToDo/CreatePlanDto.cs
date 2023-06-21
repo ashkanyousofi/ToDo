@@ -7,8 +7,8 @@ using ToDo.Application.DTOs.Common;
 
 namespace ToDo.Application.DTOs.ToDo
 {
-	public class PlanDto : BaseDto, IPlanDto
+	public class CreatePlanDto:BaseDto,IPlanDto
 	{
-		public string Title { get; set; }
-	}
+        public string Title { get; set; }
+    }
 }

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ToDo.Application.DTOs.ToDo;
 using ToDo.Application.Features.Plan.Requests.Queries;
-using ToDo.Application.Persistence.Contracts;
+using ToDo.Application.Contracts.Persistence;
 
 namespace ToDo.Application.Features.Plan.Handlers.Queries
 {

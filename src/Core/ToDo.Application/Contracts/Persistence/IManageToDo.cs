@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ToDo.Domain.Entities.ToDo;
 
-namespace ToDo.Application.Persistence.Contracts
+namespace ToDo.Application.Contracts.Persistence
 {
 	public interface IManageToDo : IGenericRepository<Plan>
 	{
