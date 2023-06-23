@@ -7,29 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using ToDo.Application.Contracts.Persistence;
 using ToDo.Domain.Entities.Common;
+using ToDo.Persistence.Context;
 
 namespace ToDo.Persistence.Repositories
 {
 	public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 	{
-		private readonly string _connectionString = @"Server=.;Initial Catalog=ToDoDB ;Integrated Security=true;";
-		public async Task<T> Add(T entity)
+		private readonly ToDoContext _context;
+        public GenericRepository(ToDoContext context)
+        {
+			_context = context;
+        }
+        public async Task<T> Add(T entity)
 		{
-			try
-			{
-				string query = "";
-				var connection = new SqlConnection(_connectionString);
-
-				var result = await connection.ExecuteAsync(query);
-
-				query = "";
-				T response = (T)await connection.QueryAsync(query);
-				return response;
-			}
-			catch (Exception)
-			{
-				throw new Exception();
-			}
+			throw new NotImplementedException();
 		}
 
 		public Task<bool> Delete(T entity)

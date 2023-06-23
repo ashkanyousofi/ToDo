@@ -20,8 +20,10 @@
 
   <ItemGroup>
     <Folder Include="Contracts\Infrastructure\SMS\" />
-    <Folder Include="DTOs\Role\" />
-    <Folder Include="DTOs\User\" />
+    <Folder Include="Features\Authentication\Handlers\Queries\" />
+    <Folder Include="Features\Authentication\Handlers\Commands\" />
+    <Folder Include="Features\Authentication\Requests\Commands\" />
+    <Folder Include="Features\Authentication\Requests\Queries\" />
   </ItemGroup>
 
 </Project>

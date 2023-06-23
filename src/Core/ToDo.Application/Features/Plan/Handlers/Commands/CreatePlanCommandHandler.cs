@@ -7,19 +7,19 @@ using System.Text;
 using System.Threading.Tasks;
 using ToDo.Application.DTOs.ToDo.Validators;
 using ToDo.Application.Features.Plan.Requests.Commands;
-using ToDo.Application.Contracts.Persistence;
 using ToDo.Application.Exceptions;
 using ToDo.Application.Responses;
+using ToDo.Application.Contracts.Persistence.Dapper;
 
 namespace ToDo.Application.Features.Plan.Handlers.Commands
 {
-	public class CreatePlanCommandHandler :
+    public class CreatePlanCommandHandler :
 		IRequestHandler<CreatePlanCommand, BaseCommandResponse>
 	{
-		private readonly IManageToDo _manageToDo;
+		private readonly IManageToDoDapper _manageToDo;
 		private readonly IMapper _mapper;
 
-        public CreatePlanCommandHandler(IManageToDo manageToDo,IMapper mapper)
+        public CreatePlanCommandHandler(IManageToDoDapper manageToDo,IMapper mapper)
         {
 			_manageToDo = manageToDo;
 			_mapper = mapper;

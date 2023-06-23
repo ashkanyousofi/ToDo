@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ToDo.Application.Contracts.Persistence;
+using ToDo.Application.Contracts.Persistence.Dapper;
 using ToDo.Domain.Entities.ToDo;
 
 namespace ToDo.UnitTest.Mocks
 {
-	public static class MockPlanRepository
+    public static class MockPlanRepository
 	{
-		public static Mock<IManageToDo> GetPlanRepository()
+		public static Mock<IManageToDoDapper> GetPlanRepository()
 		{
 			var plans = new List<Plan>()
 			{
@@ -20,7 +20,7 @@ namespace ToDo.UnitTest.Mocks
 				new Plan() {},
 			};
 
-			var mockRepo = new Mock<IManageToDo>();
+			var mockRepo = new Mock<IManageToDoDapper>();
 			mockRepo.Setup(m => m.GetAll()).ReturnsAsync(plans);
 
 			return mockRepo;

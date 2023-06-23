@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using ToDo.Application.Contracts.Persistence;
+using ToDo.Application.Contracts.Persistence.Dapper;
 using ToDo.Application.DTOs.ToDo;
 using ToDo.Application.Features.Plan.Handlers.Queries;
 using ToDo.Application.Features.Plan.Requests.Queries;
@@ -16,10 +16,10 @@ using ToDo.UnitTest.Mocks;
 
 namespace ToDo.UnitTest.Tests.Plan.Queries
 {
-	public class GetPlanListRequestHandlerTests
+    public class GetPlanListRequestHandlerTests
 	{
         IMapper _mapper;
-        Mock<IManageToDo> _mockRepository;
+        Mock<IManageToDoDapper> _mockRepository;
         public GetPlanListRequestHandlerTests()
         {
 			_mockRepository = MockPlanRepository.GetPlanRepository();

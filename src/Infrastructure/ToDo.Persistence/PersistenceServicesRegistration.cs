@@ -6,24 +6,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToDo.Application.Contracts.Persistence;
+using ToDo.Application.Contracts.Persistence.Dapper;
 using ToDo.Persistence.Context;
+using ToDo.Persistence.Repositories;
+using ToDo.Persistence.Repositories.Dapper;
 
 namespace ToDo.Persistence
 {
-	public static class PersistenceServicesRegistration
+    public static class PersistenceServicesRegistration
 	{
-		public static IServiceCollection Configure(this IServiceCollection services
+		public static IServiceCollection ConfigurePersistenceSerivces(this IServiceCollection services
 			, IConfiguration config)
 		{
+
 			#region Sql
-			services.AddDbContext<ToDoContext>(options =>
-			{
-				options.UseSqlServer(config["ConnectionStrings:ConnectionString"]);
-			});
+			services.AddDbContext<ToDoContext>(options => options.UseSqlServer(config.GetConnectionString("ConnectionString")), ServiceLifetime.Transient);
 			#endregion
+
 			#region DI
-			//services.AddScoped(typeof(interface<>),typeof(class<>));
+			services.AddScoped<IManageToDoDapper, ManageToDoDapper>();
+			services.AddScoped<IUserRepositoryDapper, UserRepositoryDapper>();
+			services.AddScoped<IRoleRepositoryDapper, RoleRepositoryDapper>();
+			services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 			#endregion
+
 			return services;
 		}
 	}

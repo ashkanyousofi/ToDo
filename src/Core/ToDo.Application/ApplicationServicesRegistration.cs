@@ -15,7 +15,7 @@ namespace ToDo.Application
 {
 	public static class ApplicationServicesRegistration
 	{
-		public static void Configure(this IServiceCollection services)
+		public static void ConfigureApplicationSerivces(this IServiceCollection services)
 		{
 			services.AddMediatR(config => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 			//services.AddAutoMapper(typeof(MappingProfile));

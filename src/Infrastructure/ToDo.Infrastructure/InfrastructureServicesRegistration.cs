@@ -13,12 +13,17 @@ namespace ToDo.Infrastructure
 {
 	public static class InfrastructureServicesRegistration
 	{
-		public static IServiceCollection Configure(this IServiceCollection services
+		public static IServiceCollection ConfigureInfrastructureSerivces(this IServiceCollection services
 				, IConfiguration config)
 		{
-			services.Configure<EmailSetting>(config.GetSection("EmailSettings"));
-			services.AddTransient<IEmailSender,EmailSender>();
 
+			#region Configuration
+			services.Configure<EmailSetting>(config.GetSection("EmailSettings"));
+			#endregion
+
+			#region DI
+			services.AddTransient<IEmailSender, EmailSender>();
+			#endregion
 
 			return services;
 		}
