@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ToDo.Application.Utilities.Enums.Roles;
-using ToDo.Domain.Entities.Role;
-using ToDo.Domain.Entities.ToDo;
-
+﻿
 namespace ToDo.Application.Contracts.Persistence.Dapper
 {
     public interface IRoleRepositoryDapper
@@ -17,5 +9,6 @@ namespace ToDo.Application.Contracts.Persistence.Dapper
         Task<Role> Add(Role role);
         Task<bool> Delete(Role role);
         Task<List<Role>> GetAllRoles();
-    }
+        Task<IQueryable<Role>> GetRolesOfUser(string userId);
+	}
 }

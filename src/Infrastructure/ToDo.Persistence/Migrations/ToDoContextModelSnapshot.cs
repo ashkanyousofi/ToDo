@@ -57,31 +57,31 @@ namespace ToDo.Persistence.Migrations
                         new
                         {
                             Id = "1",
-                            CreateDate = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(5141),
+                            CreateDate = new DateTime(2023, 7, 7, 1, 22, 40, 635, DateTimeKind.Local).AddTicks(8152),
                             Description = "",
                             IsActive = true,
                             IsDelete = false,
-                            LastModify = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(5144),
+                            LastModify = new DateTime(2023, 7, 7, 1, 22, 40, 635, DateTimeKind.Local).AddTicks(8157),
                             Title = "Creator"
                         },
                         new
                         {
                             Id = "2",
-                            CreateDate = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(5157),
+                            CreateDate = new DateTime(2023, 7, 7, 1, 22, 40, 635, DateTimeKind.Local).AddTicks(8183),
                             Description = "",
                             IsActive = true,
                             IsDelete = false,
-                            LastModify = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(5159),
+                            LastModify = new DateTime(2023, 7, 7, 1, 22, 40, 635, DateTimeKind.Local).AddTicks(8188),
                             Title = "Admin"
                         },
                         new
                         {
                             Id = "3",
-                            CreateDate = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(5173),
+                            CreateDate = new DateTime(2023, 7, 7, 1, 22, 40, 635, DateTimeKind.Local).AddTicks(8214),
                             Description = "",
                             IsActive = true,
                             IsDelete = false,
-                            LastModify = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(5186),
+                            LastModify = new DateTime(2023, 7, 7, 1, 22, 40, 635, DateTimeKind.Local).AddTicks(8227),
                             Title = "User"
                         });
                 });
@@ -128,39 +128,39 @@ namespace ToDo.Persistence.Migrations
                         new
                         {
                             Id = "1",
-                            CreateDate = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(2547),
+                            CreateDate = new DateTime(2023, 7, 7, 1, 22, 40, 635, DateTimeKind.Local).AddTicks(3752),
                             Description = "",
                             IsActive = true,
                             IsDelete = false,
                             IsNotification = true,
-                            LastModify = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(2549),
-                            Time = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(2560),
+                            LastModify = new DateTime(2023, 7, 7, 1, 22, 40, 635, DateTimeKind.Local).AddTicks(3757),
+                            Time = new DateTime(2023, 7, 7, 1, 22, 40, 635, DateTimeKind.Local).AddTicks(3773),
                             Title = "School",
                             UserId = "1"
                         },
                         new
                         {
                             Id = "2",
-                            CreateDate = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(2595),
+                            CreateDate = new DateTime(2023, 7, 7, 1, 22, 40, 635, DateTimeKind.Local).AddTicks(3805),
                             Description = "",
                             IsActive = true,
                             IsDelete = false,
                             IsNotification = true,
-                            LastModify = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(2601),
-                            Time = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(2604),
+                            LastModify = new DateTime(2023, 7, 7, 1, 22, 40, 635, DateTimeKind.Local).AddTicks(3816),
+                            Time = new DateTime(2023, 7, 7, 1, 22, 40, 635, DateTimeKind.Local).AddTicks(3822),
                             Title = "School2",
                             UserId = "1"
                         },
                         new
                         {
                             Id = "3",
-                            CreateDate = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(2637),
+                            CreateDate = new DateTime(2023, 7, 7, 1, 22, 40, 635, DateTimeKind.Local).AddTicks(3870),
                             Description = "",
                             IsActive = true,
                             IsDelete = false,
                             IsNotification = true,
-                            LastModify = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(2639),
-                            Time = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(2642),
+                            LastModify = new DateTime(2023, 7, 7, 1, 22, 40, 635, DateTimeKind.Local).AddTicks(3875),
+                            Time = new DateTime(2023, 7, 7, 1, 22, 40, 635, DateTimeKind.Local).AddTicks(3881),
                             Title = "School3",
                             UserId = "1"
                         });
@@ -198,6 +198,10 @@ namespace ToDo.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -215,14 +219,15 @@ namespace ToDo.Persistence.Migrations
                         new
                         {
                             Id = "1",
-                            Birthday = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(7368),
-                            CreateDate = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(7374),
+                            Birthday = new DateTime(2023, 7, 7, 1, 22, 40, 636, DateTimeKind.Local).AddTicks(1766),
+                            CreateDate = new DateTime(2023, 7, 7, 1, 22, 40, 636, DateTimeKind.Local).AddTicks(1775),
                             Email = "Test@test.com",
                             FirstName = "Test",
                             IsActive = true,
                             IsDelete = false,
-                            LastModify = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(7376),
+                            LastModify = new DateTime(2023, 7, 7, 1, 22, 40, 636, DateTimeKind.Local).AddTicks(1779),
                             LastName = "Test",
+                            Password = "",
                             PhoneNumber = "09100000000",
                             PhoneNumberIsActive = true,
                             PlanCount = 3L
@@ -230,14 +235,15 @@ namespace ToDo.Persistence.Migrations
                         new
                         {
                             Id = "2",
-                            Birthday = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(7389),
-                            CreateDate = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(7392),
+                            Birthday = new DateTime(2023, 7, 7, 1, 22, 40, 636, DateTimeKind.Local).AddTicks(1802),
+                            CreateDate = new DateTime(2023, 7, 7, 1, 22, 40, 636, DateTimeKind.Local).AddTicks(1808),
                             Email = "Test2@test.com",
                             FirstName = "Test2",
                             IsActive = true,
                             IsDelete = false,
-                            LastModify = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(7394),
+                            LastModify = new DateTime(2023, 7, 7, 1, 22, 40, 636, DateTimeKind.Local).AddTicks(1812),
                             LastName = "Test2",
+                            Password = "",
                             PhoneNumber = "09110000000",
                             PhoneNumberIsActive = true,
                             PlanCount = 0L
@@ -245,14 +251,15 @@ namespace ToDo.Persistence.Migrations
                         new
                         {
                             Id = "3",
-                            Birthday = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(7405),
-                            CreateDate = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(7408),
+                            Birthday = new DateTime(2023, 7, 7, 1, 22, 40, 636, DateTimeKind.Local).AddTicks(1844),
+                            CreateDate = new DateTime(2023, 7, 7, 1, 22, 40, 636, DateTimeKind.Local).AddTicks(1849),
                             Email = "Test3@test.com",
                             FirstName = "Test3",
                             IsActive = true,
                             IsDelete = false,
-                            LastModify = new DateTime(2023, 6, 22, 6, 56, 11, 561, DateTimeKind.Local).AddTicks(7410),
+                            LastModify = new DateTime(2023, 7, 7, 1, 22, 40, 636, DateTimeKind.Local).AddTicks(1854),
                             LastName = "Test3",
+                            Password = "",
                             PhoneNumber = "09120000000",
                             PhoneNumberIsActive = true,
                             PlanCount = 0L
@@ -294,31 +301,31 @@ namespace ToDo.Persistence.Migrations
                         {
                             UserId = "1",
                             RoleId = "1",
-                            CreateDate = new DateTime(2023, 6, 22, 6, 56, 11, 562, DateTimeKind.Local).AddTicks(9517),
+                            CreateDate = new DateTime(2023, 7, 7, 1, 22, 40, 636, DateTimeKind.Local).AddTicks(5771),
                             Id = "1",
                             IsActive = true,
                             IsDelete = false,
-                            LastModify = new DateTime(2023, 6, 22, 6, 56, 11, 562, DateTimeKind.Local).AddTicks(9519)
+                            LastModify = new DateTime(2023, 7, 7, 1, 22, 40, 636, DateTimeKind.Local).AddTicks(5787)
                         },
                         new
                         {
                             UserId = "1",
                             RoleId = "2",
-                            CreateDate = new DateTime(2023, 6, 22, 6, 56, 11, 562, DateTimeKind.Local).AddTicks(9532),
+                            CreateDate = new DateTime(2023, 7, 7, 1, 22, 40, 636, DateTimeKind.Local).AddTicks(5831),
                             Id = "1",
                             IsActive = true,
                             IsDelete = false,
-                            LastModify = new DateTime(2023, 6, 22, 6, 56, 11, 562, DateTimeKind.Local).AddTicks(9535)
+                            LastModify = new DateTime(2023, 7, 7, 1, 22, 40, 636, DateTimeKind.Local).AddTicks(5835)
                         },
                         new
                         {
                             UserId = "1",
                             RoleId = "3",
-                            CreateDate = new DateTime(2023, 6, 22, 6, 56, 11, 562, DateTimeKind.Local).AddTicks(9545),
+                            CreateDate = new DateTime(2023, 7, 7, 1, 22, 40, 636, DateTimeKind.Local).AddTicks(5852),
                             Id = "1",
                             IsActive = true,
                             IsDelete = false,
-                            LastModify = new DateTime(2023, 6, 22, 6, 56, 11, 562, DateTimeKind.Local).AddTicks(9548)
+                            LastModify = new DateTime(2023, 7, 7, 1, 22, 40, 636, DateTimeKind.Local).AddTicks(5856)
                         });
                 });
 

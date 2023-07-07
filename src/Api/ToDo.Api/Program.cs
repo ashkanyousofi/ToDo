@@ -1,8 +1,3 @@
-using ToDo.Persistence.Context;
-using ToDo.Application;
-using ToDo.Persistence;
-using ToDo.Infrastructure;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,21 +1,10 @@
-﻿using Dapper;
-using MediatR;
-using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ToDo.Application.Contracts.Persistence.Dapper;
-using ToDo.Domain.Entities.ToDo;
-using ToDo.Domain.Entities.User;
-
+﻿
 namespace ToDo.Persistence.Repositories.Dapper
 {
 	public class ManageToDoDapper : IManageToDoDapper
 	{
-		//private readonly string _connectionString = @"Server=.;Initial Catalog=ToDoDB ;Integrated Security=true;";
-		private readonly string _connectionString = @"Data Source =.; Initial Catalog = ToDoDB; Integrated Security = True; TrustServerCertificate=True";
+		private readonly string _connectionString = @"Server =.; User ID = .;Initial Catalog=ToDoDB; Integrated Security = True;TrustServerCertificate=True";
+		//private readonly string _connectionString = @"Data Source =.; Initial Catalog = ToDoDB; Integrated Security = True; TrustServerCertificate=True";
 		public async Task<Plan> Add(Plan plan)
 		{
 			try
@@ -93,7 +82,10 @@ namespace ToDo.Persistence.Repositories.Dapper
 				#region Get Data
 				string query = @"SELECT * FROM Plan WHERE Id==@Id";
 				var connection = new SqlConnection(_connectionString);
+				connection.Open();
+
 				Plan result = (Plan)await connection.QueryAsync(query, new { Id = id, });
+				connection.Close();
 				#endregion
 				return result;
 			}
@@ -105,12 +97,19 @@ namespace ToDo.Persistence.Repositories.Dapper
 
 		public async Task<List<Plan>> GetAllPlansByUserId(string userId)
 		{
+			//string query = "SELECT * FROM Plans where UserId==@UserId";
+			////string query = @"SELECT * FROM Plan";
+			//var connection = new SqlConnection(_connectionString);
+			//await connection.OpenAsync();
+			//var result = (List<Plan>)await connection.QueryAsync(query, new { UserId = userId });
 			try
 			{
 				#region Get Data
-				string query = @"SELECT * FROM Plan WHERE UserId==@UserId";
+				string query = "SELECT * FROM Plans";
 				var connection = new SqlConnection(_connectionString);
-				List<Plan> result = (List<Plan>)await connection.QueryAsync(query, new { UserId = userId, });
+				await connection.OpenAsync();
+				var result = connection.Query<Plan>(query).Where(plan => plan.UserId == userId).ToList();
+				await connection.CloseAsync();
 				#endregion
 				return result;
 			}
@@ -145,7 +144,7 @@ namespace ToDo.Persistence.Repositories.Dapper
 
 				#region Get Data
 				query = @$"SELECT * FROM Plan WHERE Id==@Id";
-				Plan response = (Plan)await connection.QueryAsync(query, new
+				var response = await connection.QuerySingleOrDefaultAsync<Plan>(query, new
 				{
 					Id = plan.Id,
 				});

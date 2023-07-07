@@ -1,15 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using ToDo.Domain.Entities.Common;
-using ToDo.Domain.Entities.Role;
-using ToDo.Domain.Entities.ToDo;
-using ToDo.Domain.Entities.User;
-
+﻿
 namespace ToDo.Persistence.Context
 {
 	public class ToDoContext : DbContext

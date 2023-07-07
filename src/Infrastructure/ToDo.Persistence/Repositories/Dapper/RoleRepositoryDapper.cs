@@ -1,22 +1,11 @@
-﻿using Dapper;
-using MediatR;
-using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ToDo.Application.Contracts.Persistence.Dapper;
-using ToDo.Domain.Entities.ToDo;
-using ToDo.Domain.Entities.User;
-
+﻿
 namespace ToDo.Persistence.Repositories.Dapper
 {
 	public class RoleRepositoryDapper : IRoleRepositoryDapper
 	{
 		//private readonly string _connectionString = @"Server=.;Initial Catalog=ToDoDB ;Integrated Security=true;";
 		private readonly string _connectionString = @"Data Source =.; Initial Catalog = ToDoDB; Integrated Security = True; TrustServerCertificate=True";
-		public async Task<Plan> Add(Plan plan)
+		public async Task<Role> Add(Domain.Entities.Role.Role role)
 		{
 			try
 			{
@@ -27,21 +16,18 @@ namespace ToDo.Persistence.Repositories.Dapper
 
 				var result = await connection.ExecuteAsync(query, new
 				{
-					plan.Id,
-					plan.Time,
-					plan.Title,
-					plan.IsNotification,
-					plan.UserId,
-					plan.Description,
-					plan.CreateDate,
+					role.Id,
+					role.Title,
+					role.Description,
+					role.CreateDate,
 				});
 				#endregion
 
 				#region Get Data
 				query = @$"SELECT * FROM Plan WHERE Id=@Id";
-				Plan response = (Plan)await connection.QueryAsync(query, new
+				Role response = (Role)await connection.QueryAsync(query, new
 				{
-					Id = plan.Id,
+					Id = role.Id,
 				});
 				#endregion
 				return response;
@@ -52,14 +38,14 @@ namespace ToDo.Persistence.Repositories.Dapper
 			}
 		}
 
-		public async Task<bool> Delete(Plan plan)
+		public async Task<bool> Delete(Role role)
 		{
 			try
 			{
 				#region Get Data
 				string query = @"DELETE FROM Plan WHERE Id=@Id";
 				var connection = new SqlConnection(_connectionString);
-				var result = await connection.ExecuteAsync(query, new { Id = plan.Id });
+				var result = await connection.ExecuteAsync(query, new { Id = role.Id });
 				#endregion
 				return result == 1 ? true : false;
 			}
@@ -69,14 +55,14 @@ namespace ToDo.Persistence.Repositories.Dapper
 			}
 		}
 
-		public async Task<List<Plan>> Get(Func<Plan, bool> operation)
+		public async Task<List<Role>> Get(Func<Role, bool> operation)
 		{
 			try
 			{
 				#region Get Data
 				string query = @"SELECT * FROM Plan";
 				var connection = new SqlConnection(_connectionString);
-				List<Plan> result = (List<Plan>)await connection.QueryAsync(query);
+				List<Role> result = (List<Role>)await connection.QueryAsync(query);
 				#endregion
 				return result.Where(operation).ToList();
 			}
@@ -86,14 +72,14 @@ namespace ToDo.Persistence.Repositories.Dapper
 			}
 		}
 
-		public async Task<Plan> Get(string id)
+		public async Task<Role> Get(string id)
 		{
 			try
 			{
 				#region Get Data
 				string query = @"SELECT * FROM Plan WHERE Id==@Id";
 				var connection = new SqlConnection(_connectionString);
-				Plan result = (Plan)await connection.QueryAsync(query, new { Id = id, });
+				Role result = (Role)await connection.QueryAsync(query, new { Id = id, });
 				#endregion
 				return result;
 			}
@@ -103,14 +89,14 @@ namespace ToDo.Persistence.Repositories.Dapper
 			}
 		}
 
-		public async Task<List<Plan>> GetAllPlansByUserId(string userId)
+		public async Task<List<Role>> GetAllPlansByUserId(string userId)
 		{
 			try
 			{
 				#region Get Data
 				string query = @"SELECT * FROM Plan WHERE UserId==@UserId";
 				var connection = new SqlConnection(_connectionString);
-				List<Plan> result = (List<Plan>)await connection.QueryAsync(query, new { UserId = userId, });
+				List<Role> result = (List<Role>)await connection.QueryAsync(query, new { UserId = userId, });
 				#endregion
 				return result;
 			}
@@ -120,7 +106,17 @@ namespace ToDo.Persistence.Repositories.Dapper
 			}
 		}
 
-		public async Task<Plan> Update(Plan plan)
+		public Task<List<Role>> GetAllRoles()
+		{
+			throw new NotImplementedException();
+		}
+
+		public Task<IQueryable<Role>> GetRolesOfUser(string userId)
+		{
+			throw new NotImplementedException();
+		}
+
+		public async Task<Role> Update(Role role)
 		{
 			try
 			{
@@ -133,21 +129,18 @@ namespace ToDo.Persistence.Repositories.Dapper
 
 				var result = await connection.ExecuteAsync(query, new
 				{
-					Id = plan.Id,
-					Time = plan.Time,
-					Title = plan.Title,
-					IsNotification = plan.IsNotification,
-					UserId = plan.UserId,
-					Description = plan.Description,
-					CreateDate = plan.CreateDate,
+					Id = role.Id,
+					Title = role.Title,
+					Description = role.Description,
+					CreateDate = role.CreateDate,
 				});
 				#endregion
 
 				#region Get Data
 				query = @$"SELECT * FROM Plan WHERE Id==@Id";
-				Plan response = (Plan)await connection.QueryAsync(query, new
+				Role response = (Role)await connection.QueryAsync(query, new
 				{
-					Id = plan.Id,
+					Id = role.Id,
 				});
 				#endregion
 				return response;

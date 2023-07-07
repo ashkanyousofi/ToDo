@@ -1,55 +1,68 @@
-﻿using AutoMapper;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using ToDo.Application.DTOs.ToDo;
-using ToDo.Application.Features.Plan.Requests.Queries;
-using ToDo.Domain.Entities.ToDo;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
+﻿
 namespace ToDo.Api.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
 	public class ToDoController : ControllerBase
 	{
+		#region Constructor
 		private readonly IMediator _mediator;
+		private readonly IMapper _mapper;
 
-		public ToDoController(IMediator mediator)
-        {
+		public ToDoController(IMediator mediator, IMapper mapper)
+		{
 			_mediator = mediator;
+			_mapper = mapper;
 		}
-        // GET: api/<ToDoController>
-        [HttpGet]
-		public async Task<ActionResult<IEnumerable<PlanDto>>> Get(string userId)
+		#endregion
+		
+		#region Get
+		[HttpGet("GetPlan/{planId}")]
+		public async Task<ActionResult<PlanDto>> GetPlan(string planId)
 		{
-			var plan = await _mediator.Send(new GetPlanListRequest());
-			return plan;
+			if (!ModelState.IsValid) return BadRequest(planId);
+			PlanDto plan = await _mediator.Send(new GetPlanRequest() { Id = planId });
+			return Ok(plan);
 		}
 
-		// GET api/<ToDoController>/5
-		[HttpGet("{id}")]
-		public string Get(int id)
+		[HttpGet("GetPlans/{userId}")]
+		public async Task<ActionResult<IEnumerable<PlanDto>>> GetPlans(string userId)
 		{
-			return "value";
+			if (!ModelState.IsValid) return BadRequest(userId);
+			List<PlanDto> plan = await _mediator.Send(new GetPlanListRequest() { Id = userId });
+			return Ok(plan);
 		}
+		#endregion
 
-		// POST api/<ToDoController>
-		[HttpPost]
-		public void Post([FromBody] string value)
+		#region Post
+		[HttpPost("InsertPlan")]
+		public async Task<ActionResult<PlanDto>> InsertPlan([FromBody] CreatePlanDto createPlanDto)
 		{
+			if (!ModelState.IsValid) return BadRequest();
+			var plan = await _mediator.Send(new CreatePlanCommand() { CreatePlanDto = createPlanDto });
+			return Ok(plan);
 		}
+		#endregion
 
-		// PUT api/<ToDoController>/5
-		[HttpPut("{id}")]
-		public void Put(int id, [FromBody] string value)
+		#region Put
+		[HttpPut("UpdatePlan")]
+		public async Task<ActionResult<PlanDto>> GetUserPlans([FromBody] UpdatePlanDto updatePlanDto)
 		{
+			if (!ModelState.IsValid) return BadRequest();
+			PlanDto plan = await _mediator.Send(new UpdatePlanCommand() { UpdatePlanDto = updatePlanDto });
+			return Ok(plan);
 		}
+		#endregion
 
-		// DELETE api/<ToDoController>/5
-		[HttpDelete("{id}")]
-		public void Delete(int id)
+		#region Delete
+		[HttpDelete("DeletePlan/{planId}")]
+		public async Task<ActionResult> DeletePlan(string planId)
 		{
+			if (!ModelState.IsValid) return BadRequest();
+			PlanDto plan = await _mediator.Send(new GetPlanRequest() { Id = planId });
+			var result = await _mediator.Send(new DeletePlanCommand() { DeletePlanDto = _mapper.Map<DeletePlanDto>(plan) });
+			return Ok(plan);
 		}
+		#endregion
 	}
 }

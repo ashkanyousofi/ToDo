@@ -8,7 +8,7 @@ using ToDo.Domain.Entities.Common;
 
 namespace ToDo.Domain.Entities.ToDo
 {
-	public class Plan:BaseEntity
+	public class Plan :BaseEntity
 	{
         public Plan()
         {

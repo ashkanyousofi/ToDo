@@ -1,0 +1,17 @@
+﻿global using AutoMapper;
+global using MediatR;
+global using ToDo.Domain.Entities.ToDo;
+global using ToDo.Domain.Entities.User;
+global using Microsoft.AspNetCore.Mvc;
+global using ToDo.Application.DTOs.ToDo;
+global using ToDo.Application.Features.Plan.Requests.Commands;
+global using ToDo.Application.Features.Plan.Requests.Queries;
+global using Microsoft.AspNetCore.Authorization;
+global using ToDo.Application.DTOs.Authentication;
+global using ToDo.Application.DTOs.UserRole.Create;
+global using ToDo.Application.Features.Authentication.Requests.Commands;
+global using ToDo.Persistence.Context;
+global using ToDo.Application;
+global using ToDo.Persistence;
+global using ToDo.Infrastructure;
+global using Microsoft.EntityFrameworkCore;

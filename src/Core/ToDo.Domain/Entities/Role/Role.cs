@@ -8,7 +8,7 @@ using ToDo.Domain.Entities.User;
 
 namespace ToDo.Domain.Entities.Role
 {
-	public class Role:BaseEntity
+	public class Role :BaseEntity
 	{
         public Role()
         {

@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToDo.Application.Contracts.Infrastructure.Auth.TokenGenerator;
 using ToDo.Application.Contracts.Infrastructure.Email;
 using ToDo.Application.Models.Sender;
+using ToDo.Infrastructure.Services.Auth.TokenGenerator;
 using ToDo.Infrastructure.Services.Mail;
 
 namespace ToDo.Infrastructure
@@ -23,6 +25,7 @@ namespace ToDo.Infrastructure
 
 			#region DI
 			services.AddTransient<IEmailSender, EmailSender>();
+			services.AddTransient<IJwt, Jwt>();
 			#endregion
 
 			return services;

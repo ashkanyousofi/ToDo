@@ -8,7 +8,7 @@ using ToDo.Application.DTOs.ToDo;
 
 namespace ToDo.Application.DTOs.UserRole.Validators
 {
-	public class IRoleDtoValidator : AbstractValidator<IUserDto>
+	public class IRoleDtoValidator : AbstractValidator<IRoleDto>
 	{
 		public IRoleDtoValidator()
 		{

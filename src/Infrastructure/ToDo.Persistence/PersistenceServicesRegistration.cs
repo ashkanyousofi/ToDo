@@ -1,17 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ToDo.Application.Contracts.Persistence;
-using ToDo.Application.Contracts.Persistence.Dapper;
-using ToDo.Persistence.Context;
-using ToDo.Persistence.Repositories;
-using ToDo.Persistence.Repositories.Dapper;
-
+﻿
 namespace ToDo.Persistence
 {
     public static class PersistenceServicesRegistration

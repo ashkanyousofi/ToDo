@@ -1,14 +1,4 @@
-﻿using Dapper;
-using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ToDo.Application.Contracts.Persistence;
-using ToDo.Domain.Entities.Common;
-using ToDo.Persistence.Context;
-
+﻿
 namespace ToDo.Persistence.Repositories
 {
 	public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity

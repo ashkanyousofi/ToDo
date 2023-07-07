@@ -1,16 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ToDo.Application.DTOs.ToDo.Validators;
-using ToDo.Application.Features.Plan.Requests.Commands;
-using ToDo.Application.Exceptions;
-using ToDo.Application.Responses;
-using ToDo.Application.Contracts.Persistence.Dapper;
-
+﻿
 namespace ToDo.Application.Features.Plan.Handlers.Commands
 {
     public class CreatePlanCommandHandler :
