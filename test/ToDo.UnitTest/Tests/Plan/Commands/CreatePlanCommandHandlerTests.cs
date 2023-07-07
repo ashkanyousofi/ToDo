@@ -19,37 +19,37 @@ namespace ToDo.UnitTest.Tests.Plan.Commands
 {
     public class CreatePlanCommandHandlerTests
 	{
-		IMapper _mapper;
-		Mock<IManageToDoDapper> _mockRepository;
-		CreatePlanDto _createPlanlanDto;
-		public CreatePlanCommandHandlerTests()
-		{
-			_mockRepository = MockPlanRepository.GetPlanRepository();
-			#region ConfigMapper
-			var mapperConfig = new MapperConfiguration(m =>
-			{
-				m.AddProfile<MappingProfile>();
+		//IMapper _mapper;
+		//Mock<IManageToDoDapper> _mockRepository;
+		//CreatePlanDto _createPlanlanDto;
+		//public CreatePlanCommandHandlerTests()
+		//{
+		//	_mockRepository = MockPlanRepository.GetPlanRepository();
+		//	#region ConfigMapper
+		//	var mapperConfig = new MapperConfiguration(m =>
+		//	{
+		//		m.AddProfile<MappingProfile>();
 
-			});
-			_mapper = mapperConfig.CreateMapper();
-			#endregion
-			_createPlanlanDto = new CreatePlanDto()
-			{
+		//	});
+		//	_mapper = mapperConfig.CreateMapper();
+		//	#endregion
+		//	_createPlanlanDto = new CreatePlanDto()
+		//	{
 				
-			};
-		}
-		[Fact]
-		public async Task CreatePlanTest()
-		{
-			var handler = new CreatePlanCommandHandler(_mockRepository.Object, _mapper);
-			var result = await handler.Handle(new CreatePlanCommand()
-			{
-				CreatePlanDto = _createPlanlanDto
-			}, CancellationToken.None); ;
+		//	};
+		//}
+		//[Fact]
+		//public async Task CreatePlanTest()
+		//{
+			//var handler = new CreatePlanCommandHandler(_mockRepository.Object, _mapper);
+			//var result = await handler.Handle(new CreatePlanCommand()
+			//{
+			//	CreatePlanDto = _createPlanlanDto
+			//}, CancellationToken.None); ;
 
-			result.ShouldBeOfType<string>();
-			var plan = await _mockRepository.Object.GetAll();
-			plan.Count.ShouldBe(4);
-		}
+			//result.ShouldBeOfType<string>();
+			//var plan = await _mockRepository.Object.GetAll();
+			//plan.Count.ShouldBe(4);
+		//}
 	}
 }

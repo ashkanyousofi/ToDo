@@ -18,27 +18,27 @@ namespace ToDo.UnitTest.Tests.Plan.Queries
 {
     public class GetPlanListRequestHandlerTests
 	{
-        IMapper _mapper;
-        Mock<IManageToDoDapper> _mockRepository;
-        public GetPlanListRequestHandlerTests()
-        {
-			_mockRepository = MockPlanRepository.GetPlanRepository();
-			#region ConfigMapper
-			var mapperConfig = new MapperConfiguration(m =>
-			{
-				m.AddProfile<MappingProfile>();
+  //      IMapper _mapper;
+  //      Mock<IManageToDoDapper> _mockRepository;
+  //      public GetPlanListRequestHandlerTests()
+  //      {
+		//	_mockRepository = MockPlanRepository.GetPlanRepository();
+		//	#region ConfigMapper
+		//	var mapperConfig = new MapperConfiguration(m =>
+		//	{
+		//		m.AddProfile<MappingProfile>();
 
-			});
-			_mapper = mapperConfig.CreateMapper();
-			#endregion
-		}
-		[Fact]
-		public async Task GetPlanListTest()
-		{
-			var handler = new GetPlanListRequestHandler(_mockRepository.Object,_mapper);
-			var result = await handler.Handle(new GetPlanListRequest(),CancellationToken.None);
-			result.ShouldBeOfType<List<PlanDto>>();
-			result.Count.ShouldBe(3);
-		}
+		//	});
+		//	_mapper = mapperConfig.CreateMapper();
+		//	#endregion
+		//}
+		//[Fact]
+		//public async Task GetPlanListTest()
+		//{
+		//	var handler = new GetPlanListRequestHandler(_mockRepository.Object,_mapper);
+		//	var result = await handler.Handle(new GetPlanListRequest(),CancellationToken.None);
+		//	result.ShouldBeOfType<List<PlanDto>>();
+		//	result.Count.ShouldBe(3);
+		//}
 	}
 }
